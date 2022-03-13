@@ -1,14 +1,26 @@
-from cleanText import clean_text
-from removeStopwords import remove_stopwords
+from matplotlib import pyplot as plt
+from wordcloud import WordCloud
+from prepareText.getDataCSV import get_data_csv
+from prepareText.cleanText import clean_text
+from prepareText.removeStopwords import remove_stopwords
+from prepareText.bagOfWords import bag_of_words
+
+# prepare data
+data = get_data_csv('dataFiles/True.csv')
+data = clean_text(data)
+data = remove_stopwords(data)
+data_list = data.split(' ')
+
+# bag of words
+data_set = set(data_list)
+data_dict = bag_of_words(data_set, data_list)
+
+# generate word cloud
+wc = WordCloud()
+wc.generate_from_frequencies(data_dict)
+plt.imshow(wc, interpolation='bilinear')
+plt.axis("off")
+plt.show()
 
 
-input1 = 'Dzisiaj mamy 4 stopnie na plusie, 1 marca 2022 roku. Lorem ipsum dolor sit amet, consectetur; adipiscing elit.' \
-        'Sed eget mattis sem. Mauris egestas erat quam, ut faucibus eros congue et. In' \
-        'eu risus.or :) sit amet, consectetur; adipiscing elit. Sed eget mattis sem. ;) ' \
-        'Mauris ;( egestas erat quam, :-< ut <p>'
-
-input2 = 'This is a day in a year when we all'
-
-print(clean_text(input1))
-print(remove_stopwords(input2))
 
