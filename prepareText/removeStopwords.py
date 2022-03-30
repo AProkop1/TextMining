@@ -2,9 +2,7 @@ import nltk
 from nltk.corpus import stopwords
 
 
-def remove_stopwords(input: str) -> str:
+def remove_stopwords(input: list) -> list:
     eng_stopwords = set(stopwords.words('english'))
-    input_list = list(input.split(" "))
-    input_without_stopwords = [word.lower() for word in input_list if not word in eng_stopwords]
-    return ' '.join([str(word) for word in input_without_stopwords])
-
+    input_without_stopwords = [word.lower() for word in input if word not in eng_stopwords]
+    return input_without_stopwords
