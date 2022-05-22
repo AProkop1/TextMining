@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 
 
 def get_data(path: str) -> pd.DataFrame:
-    return pd.read_csv(path).head(50000).dropna()
+    return pd.read_csv(path, sep=';').dropna()
 
 
 def split_dataset(X_data: pd.DataFrame, y_data: pd.DataFrame) -> dict:

@@ -40,7 +40,7 @@ def compare_predictions(reviews: list, classifiers: list, cleaned_data) -> None:
     pretty_table = PrettyTable()
     pretty_table.add_column("Review", reviews)
     for classifier in classifiers:
-        model = trained_model(cleaned_data['text'], cleaned_data["stars"], classifier)
+        model = trained_model(cleaned_data['verified_reviews'], cleaned_data["rating"], classifier)
         list = []
         for rev in reviews:
             list.append(prediction(rev, model))
