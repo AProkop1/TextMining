@@ -25,7 +25,7 @@ def get_keywords_count(df: pd.DataFrame) -> dict:
 
     return top_10_count
 
-
+# most important
 def get_top_10_keywords(df: pd.DataFrame) -> list:
     vectorizer = TfidfVectorizer(tokenizer=text_tokenizer)
     X_transform = vectorizer.fit_transform(df['text'])

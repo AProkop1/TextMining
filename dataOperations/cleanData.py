@@ -11,7 +11,7 @@ def clean_data(df: pd.DataFrame):
     return df
 
 
-def text_tokenizer(text):
+def text_tokenizer(text) -> list:
     text = clear_text(text)
     text = stem_text(text)
     text = clear_stopwords(text)
@@ -19,7 +19,7 @@ def text_tokenizer(text):
     return text.split()
 
 
-def clear_text(text):
+def clear_text(text) -> str:
     text = re.sub(r'[.,]', '', text)
     text = re.sub(r'[:;][^\s]{1,2}', '', text)
     text = re.sub(r'\d', '', text)
